@@ -3,52 +3,17 @@
 <head>
 	<meta charset='utf-8'>
 	<title>BoHip</title>
+
+	<link rel="stylesheet" href="vendor/normalize-css/normalize.css">
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lobster+Two:400,700">
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:100,700">
+
+	<link rel="stylesheet" href="assets/main.css">
+
 	<script src="vendor/d3/d3.js"></script>
 	<script src="vendor/trianglify/trianglify.js"></script>
 	<script src="vendor/hogan/web/builds/2.0.0/hogan-2.0.0.js"></script>
-	<link rel="stylesheet" href="vendor/normalize-css/normalize.css">
-	<style>
-	/*body {background: black}*/
-	card {
-		display: block;
-		width: 5cm;
-		height: 5cm;
-		float: left;
-		color: #fff;
-		padding: 0 .5cm;
-		margin: 1.5mm;
-		box-sizing: border-box;
-		position: relative;
-	}
-
-	h1 {
-		font-size:1.5em
-	}
-
-	/* roads */
-	.hasRoad {
-		border:0;
-	}
-
-	.top {
-		border-top: .7cm ridge white
-	}
-	.right {
-		border-right: .7cm ridge white
-	}
-	.bottom, .straight {
-		border-bottom: .7cm ridge white
-	}
-	.left {
-		border-left: .7cm ridge white
-	}
-
-	.hasRoad {
-		border-color: rgba(255,255,255,.9);
-		/*border-color: rgba(0,0,0,.9);*/
-		border-style: solid;
-	}
-	</style>
+	
 </head>
 <body>
 <script>
@@ -62,43 +27,51 @@
 
 	// Aesthetics
 	var boganbg = new Trianglify(trianglifyOpts)
-						.generate(500, 500)
+						.generate(500, 50)
 						.dataUrl;
 
 	var hipsterbg = new Trianglify(trianglifyOpts)
-						.generate(500, 500)
+						.generate(500, 50)
 						.dataUrl;
 
 	// Main card template
-	var card = Hogan.compile("<card class='{{Position}}' style='background-image:{{Image}}'>"+
-								"<h1>{{Title}}</h1>"+
-								"{{Type}} {{Counter}}" +
+	var card = Hogan.compile("<card class='card {{Classes}}' style='background-image:{{Image}}'>"+
+								"<h1>{{{Title}}}</h1>"+
+								"<category>{{Category}}</category>" +
+								"{{#Counter}}" +
+									"<counter>{{Counter}}</counter>" +
+								"{{/Counter}}" +
 							"</card>");
 
 	// Get CSV
 	d3.csv("data.csv", function(err, rows) {
 		var cards = [];
 		rows.map(function(row) {
-			for (var i = row.Counter.length - 1; i >= 0; i--) {
+			for (var i = row.Counter - 1; i >= 0; i--) {
 
-				var Pos = (row.Position) ? "hasRoad " + row.Position.toLowerCase() : '';
+				var classes = row.Position.split(' ');
+				classes.push(row.Category);
+
+				classes = classes.join(' ').toLowerCase();
+
+				var count = (row.Counter > 1) ? (i+1) + " of " + row.Counter : '';
 
 				cards.push(
 					// Bogan
 					card.render({
-						Title: row.Bogan,
-						Position: Pos,
-						Type: row.Category,
-						Counter: row.Counter,
+						Title: titlify(row.Bogan),
+						Classes: classes + ' bogan',
+						Category: row.Category,
+						Counter: count,
 						Image: boganbg
 					}),
 
 					// Hipster
 					card.render({
-						Title: row.Hipster,
-						Position: Pos,
-						Type: row.Category,
-						Counter: row.Counter,
+						Title: titlify(row.Hipster),
+						Classes: classes + ' hipster',
+						Category: row.Category,
+						Counter: count,
 						Image: hipsterbg
 					})
 				);
@@ -107,6 +80,14 @@
 
 		page.html(cards.join(''));
 	});
+
+	function titlify (title) {
+		if (!title.match(': '))
+			return title;
+
+		title = title.split(/: /);
+		return title[0] + "<br><span>" + title[1] + "</span>";
+	}
 </script>
 </body>
 </html>
