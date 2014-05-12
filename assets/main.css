@@ -1,4 +1,6 @@
-
+body {
+	background: #003;
+}
 card {
 	display: block;
 	width: 5cm;
@@ -75,10 +77,13 @@ category,
 counter {
 	position: absolute;
 	z-index: 2;
-	bottom: 0;
+	bottom: .2cm;
 	right: .5cm;
-	font-size: .6em;
+	font-size: .5em;
 	text-align: right;
+	text-transform: uppercase;
+	opacity: .8;
+	text-shadow: 1px 1px 0 #000;
 }
 counter {
 	left: .5cm;
