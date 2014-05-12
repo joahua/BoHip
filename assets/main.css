@@ -1,11 +1,29 @@
 body {
 	background: #003;
 }
+
+#controls {
+	opacity: .3;
+	transition:all .3s ease;
+
+	position: absolute;
+	bottom: 0
+	left:0;
+	right:0;
+	padding: 1em;
+	z-index: 9999;
+	text-align: right;
+}
+	#controls:hover {
+		opacity: 1;
+	}
+	button {
+		display:block;
+	}
+
 card {
-	display: block;
 	width: 5cm;
 	height: 5cm;
-	float: left;
 	color: #fff;
 	padding: 0 .5cm;
 	border-radius: .25cm;
@@ -15,6 +33,7 @@ card {
 	overflow: hidden;
 	page-break-inside: avoid;
 	background-size: cover;
+	display: none;
 }
 
 h1 {
@@ -62,13 +81,40 @@ card {
 .card {
 	border-color: rgba(240,240,240,.9);
 	border-style: solid;
+	/*border-image: url('images/cobblestone_texture_tileable_by_kuroyumegd-d5xb747.jpg') 100 repeat;*/
 }
 
-.bogan h1 {
+pair {
+	position: relative;
+	width: 5cm;
+	height: 5cm;
+	float: left;
+}
+
+.bogan,
+.hipster {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	transform: rotateY(180deg);
+
+	transition: all 1s ease;
+}
+.bogan .bogan,
+.hipster .hipster {
+	display: block;
+	z-index: 2;
+	transform: rotateY(0);
+}
+
+.bogan>h1 {
 	font-family: 'Lobster Two', cursive;
 }
 
-.hipster h1 {
+.hipster>h1 {
 	font-family: 'Roboto', sans-serif;
 	font-size: 1.4em
 }
@@ -105,4 +151,13 @@ counter {
 }
 .hipster:after {
 	background: url(images/mo.svg) 50% 50% no-repeat;
+}
+
+@media print {
+	body {
+		background: none
+	}
+	.no-print {
+		display: none
+	}
 }
