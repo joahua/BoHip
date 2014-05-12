@@ -1,20 +1,112 @@
 <!doctype html>
 <html>
 <head>
-	<title></title>
-	<script src="vendor/d3.js"></script>
+	<meta charset='utf-8'>
+	<title>BoHip</title>
+	<script src="vendor/d3/d3.js"></script>
+	<script src="vendor/trianglify/trianglify.js"></script>
+	<script src="vendor/hogan/web/builds/2.0.0/hogan-2.0.0.js"></script>
 	<link rel="stylesheet" href="vendor/normalize-css/normalize.css">
+	<style>
+	/*body {background: black}*/
+	card {
+		display: block;
+		width: 5cm;
+		height: 5cm;
+		float: left;
+		color: #fff;
+		padding: 0 .5cm;
+		margin: 1.5mm;
+		box-sizing: border-box;
+		position: relative;
+	}
+
+	h1 {
+		font-size:1.5em
+	}
+
+	/* roads */
+	.hasRoad {
+		border:0;
+	}
+
+	.top {
+		border-top: .7cm ridge white
+	}
+	.right {
+		border-right: .7cm ridge white
+	}
+	.bottom, .straight {
+		border-bottom: .7cm ridge white
+	}
+	.left {
+		border-left: .7cm ridge white
+	}
+
+	.hasRoad {
+		border-color: rgba(255,255,255,.9);
+		/*border-color: rgba(0,0,0,.9);*/
+		border-style: solid;
+	}
+	</style>
 </head>
 <body>
 <script>
-	d3.csv("data.csv")
-    .row(function(d) { return {
-    	key: d.key,
-    	value: +d.value
-    } })
-    .get(function(err, rows) {
-    	console.log(rows);
-    });
+	var page = d3.select('body');
+	
+	var trianglifyOpts = {
+		noiseIntensity: 0, 
+		cellpadding: 10, 
+		cellsize: 100
+	};
+
+	// Aesthetics
+	var boganbg = new Trianglify(trianglifyOpts)
+						.generate(500, 500)
+						.dataUrl;
+
+	var hipsterbg = new Trianglify(trianglifyOpts)
+						.generate(500, 500)
+						.dataUrl;
+
+	// Main card template
+	var card = Hogan.compile("<card class='{{Position}}' style='background-image:{{Image}}'>"+
+								"<h1>{{Title}}</h1>"+
+								"{{Type}} {{Counter}}" +
+							"</card>");
+
+	// Get CSV
+	d3.csv("data.csv", function(err, rows) {
+		var cards = [];
+		rows.map(function(row) {
+			for (var i = row.Counter.length - 1; i >= 0; i--) {
+
+				var Pos = (row.Position) ? "hasRoad " + row.Position.toLowerCase() : '';
+
+				cards.push(
+					// Bogan
+					card.render({
+						Title: row.Bogan,
+						Position: Pos,
+						Type: row.Category,
+						Counter: row.Counter,
+						Image: boganbg
+					}),
+
+					// Hipster
+					card.render({
+						Title: row.Hipster,
+						Position: Pos,
+						Type: row.Category,
+						Counter: row.Counter,
+						Image: hipsterbg
+					})
+				);
+			}
+		});
+
+		page.html(cards.join(''));
+	});
 </script>
 </body>
 </html>
