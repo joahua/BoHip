@@ -1,1 +1,50 @@
-Category,Bogan,Hipster,Position,CounterService,Joe’s auto shop,Glen’s One-Stop Fixie Shop,Straight,1Service,Shooting Range,Vintage Games Arcade,Straight,1Service,Conference Venue,Creative Space,Bottom right corner,1Service,Post office,Post office,Straight,1Service,School,School,Straight,1Service,School,School,Straight,1Service,Waxing Clinic,Specialist Beard Salon,Straight,1Service,Maximum Bulk,Yogilates,Straight,1Service,Bus stop,Bike-share depot,Straight,1Service,Trailer Park,Community Garden,Bottom left corner,1Service,Hair salon,Ink’d: Tattoo parlour,Bottom left corner,1Service,Greyhound racing,1,Straight,1Service,1,1,Straight,1Service,1,1,Straight,1Service,1,1,Bottom left corner,1Service,1,1,Bottom right corner,1Service,1,1,Bottom right corner,1Restaurant/Bar,Glitzy: night club,The Underground,Bottom right corner,1Restaurant/Bar,Pizza Hut,Crusty’s Pizza Bar,Bottom left corner,1Restaurant/Bar,Hooters,Dude Food,Straight,1Restaurant/Bar,Paunch Burger,Earth’s Bounty: Raw Vegan Café,Bottom right corner,1Restaurant/Bar,Mr Wong's Chinese Takeaway,Spic'd: Asian fusion,Bottom right corner,1Restaurant/Bar,Suburban pub,Speakeasy,Bottom left corner,1Restaurant/Bar,1,1,Bottom right corner,1Restaurant/Bar,1,1,Bottom left corner,1Restaurant/Bar,1,1,Bottom left corner,1Retail,All-Mart,Bespoke Bamboo Homewares,Straight,1Retail,Tracksuits R Us,Spin a Yarn,Straight,1Retail,Flo's Flowers,Nina's Nursery,Bottom left corner,1Retail,Lowes,Thrift store,Straight,1Retail,White goods store,Laundromat,Bottom left corner,1Retail,1,1,Bottom left corner,1Retail,1,1,Bottom right corner,1Retail,1,1,Bottom right corner,1Retail,Strip mall 1/4,Strip mall 1/5,Bottom right corner,1Retail,Strip mall 2/4,Strip mall 2/5,Bottom left corner,1Retail,Strip mall 3/4,Strip mall 3/5,Top right corner,1Retail,Strip mall 4/4,Strip mall 4/5,Top left corner,1Retail,Strip mall 1/4,Strip mall 1/5,Bottom right corner,1Retail,Strip mall 2/4,Strip mall 2/5,Bottom left corner,1Retail,Strip mall 3/4,Strip mall 3/5,Top right corner,1Retail,Strip mall 4/4,Strip mall 4/5,Top left corner,1Residential,Share house,Studio apartment,Straight,4Residential,House,Loft apartment,Bottom right corner,4Residential,Apartment block 1/2,Apartment block 1/2,Bottom right corner,4Residential,Apartment block 2/2,Apartment block 2/2,Bottom left corner,4
+Category,Bogan,Hipster,Position,Counter
+Service,Joe’s auto shop,Glen’s One-Stop Fixie Shop,Straight,1
+Service,Shooting Range,Vintage Games Arcade,Straight,1
+Service,Conference Venue,Creative Space,Bottom right corner,1
+Service,Post office,Post office,Straight,1
+Service,School,School,Straight,1
+Service,School,School,Straight,1
+Service,Waxing Clinic,Specialist Beard Salon,Straight,1
+Service,Maximum Bulk,Yogilates,Straight,1
+Service,Bus stop,Bike-share depot,Straight,1
+Service,Trailer Park,Community Garden,Bottom left corner,1
+Service,Hair salon,Ink’d: Tattoo parlour,Bottom left corner,1
+Service,Greyhound racing,Fixie racing track,Straight,1
+Service,AMR Multiplex,French cinema,Straight,1
+Service,Guard Dog Training Centre,Put A Bird On It: pet shop,Straight,1
+Service,Medical Centre,Naturopathy, Herbalism and Acupuncture Centre,Bottom left corner,1
+Service,Igor's: horror-themed theatre restaurant,The Boudoir: cabaret burlesque theatre,Bottom right corner,1
+Service,Skate park,Community creative space,Bottom right corner,1
+Restaurant/Bar,Wendy's,Froyo,Straight,1
+Restaurant/Bar,Glitzy: night club,The Underground,Bottom right corner,1
+Restaurant/Bar,Pizza Shack,Crusty’s Pizza Bar,Bottom left corner,1
+Restaurant/Bar,Hooters,Dude Food,Straight,1
+Restaurant/Bar,Paunch Burger,Earth’s Bounty: Raw Vegan Café,Bottom right corner,1
+Restaurant/Bar,Mr Wong's Chinese Takeaway,Spic'd: Asian fusion,Bottom right corner,1
+Restaurant/Bar,Suburban pub,Speakeasy,Bottom left corner,1
+Restaurant/Bar,Robbo's Ribs: all you can eat!,Suzy Spoon's Vegetarian Butcher,Bottom right corner,1
+Restaurant/Bar,Red Rooster,Sip 'n Scrabble: Coffee roasting + board games,Bottom left corner,1
+Retail,Costco,Farmer's Markets,Bottom left corner, 1
+Retail,Bah-bling: quality and affordable jewelry,Hemp clothing,Straight,1
+Retail,All-Mart,Bespoke Bamboo Homewares,Straight,1
+Retail,Tracksuits R Us,Spin a Yarn,Straight,1
+Retail,Flo's Flowers,Nina's Nursery,Bottom left corner,1
+Retail,Lowes,Thrift store,Straight,1
+Retail,White goods store,Laundromat,Bottom left corner,1
+Retail,Hip-hop + trance CD specialists,World Records: world music vinyls and cassettes,Bottom left corner,1
+Retail,Chemist,Happy Herbs,Bottom right corner,1
+Retail,Liquor-Land,The Lone Pine Microbrewery,Bottom right corner,1
+Retail,Strip mall 1/4,Strip mall 1/5,Bottom right corner,1
+Retail,Strip mall 2/4,Strip mall 2/5,Bottom left corner,1
+Retail,Strip mall 3/4,Strip mall 3/5,Top right corner,1
+Retail,Strip mall 4/4,Strip mall 4/5,Top left corner,1
+Retail,Strip mall 1/4,Strip mall 1/5,Bottom right corner,1
+Retail,Strip mall 2/4,Strip mall 2/5,Bottom left corner,1
+Retail,Strip mall 3/4,Strip mall 3/5,Top right corner,1
+Retail,Strip mall 4/4,Strip mall 4/5,Top left corner,1
+Residential,House,Renovated warehouse,Straight,1
+Residential,Share house,Studio apartment,Straight,4
+Residential,House,Loft apartment,Bottom right corner,4
+Residential,Apartment block 1/2,Apartment block 1/2,Bottom right corner,4
+Residential,Apartment block 2/2,Apartment block 2/2,Bottom left corner,4
