@@ -22,8 +22,8 @@ body {
 	}
 
 card {
-	width: 5cm;
-	height: 5cm;
+	width: 4.5cm;
+	height: 4.5cm;
 	color: #fff;
 	padding: 0 .5cm;
 	border-radius: .25cm;
@@ -86,9 +86,10 @@ card {
 
 pair {
 	position: relative;
-	width: 5cm;
-	height: 5cm;
+	width: 4.5cm;
+	height: 4.5cm;
 	float: left;
+	page-break-inside: avoid;
 }
 
 .bogan,
@@ -116,7 +117,8 @@ pair {
 
 .hipster>h1 {
 	font-family: 'Roboto', sans-serif;
-	font-size: 1.4em
+	font-size: 1em;
+	line-height: 1;
 }
 
 category,
