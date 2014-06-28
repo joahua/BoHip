@@ -6,10 +6,10 @@ function generateTileBackground () {
 		cellpadding: 10, 
 		cellsize: 50
 	};
-	var css = '.card.bogan { background-image: ' + new Trianglify(trianglifyOpts)
+	var css = '.tile.bogan { background-image: ' + new Trianglify(trianglifyOpts)
 						.generate(250, 250)
 						.dataUrl + ' }' +
-				'.card.hipster { background-image: ' + new Trianglify(trianglifyOpts)
+				'.tile.hipster { background-image: ' + new Trianglify(trianglifyOpts)
 						.generate(250, 250)
 						.dataUrl + ' }',
 		head = document.head,
@@ -39,14 +39,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	.addEventListener('click', generateTileBackground);
 
 	var lastState = 0;
-	var cards = document.querySelector('#cards');
+	var tiles = document.querySelector('#tiles');
 
-	document.querySelector('.both-cards')
+	document.querySelector('.both-tiles')
 	.addEventListener('click', function() {
-		cards.className = 'hipster bogan'
+		tiles.className = 'hipster bogan'
 	})
 
-	document.querySelector('.toggle-cards')
+	document.querySelector('.toggle-tiles')
 	.addEventListener('click', function() {
 
 		var states = [
@@ -55,27 +55,27 @@ document.addEventListener('DOMContentLoaded', function() {
 			// , 'hipster bogan'
 		];
 
-		cards.className = states[lastState++] || states[0];
+		tiles.className = states[lastState++] || states[0];
 
 		if (lastState >= states.length)
 			lastState = 0;
 	});
 });
 
-// Main card template
-var card = Hogan.compile("<card class='card {{Classes}}'>"+
+// Main tile template
+var tile = Hogan.compile("<tile class='tile {{Classes}}'>"+
 							"<h1>{{{Title}}}</h1>"+
 							"<category>{{Category}}</category>" +
 							"{{#Counter}}" +
 								"<counter>{{Counter}}</counter>" +
 							"{{/Counter}}" +
-						"</card>");
+						"</tile>");
 
 // Get CSV
 d3.csv("data-tiles.csv", function(err, rows) {
-	var page = d3.select('#cards');
+	var page = d3.select('#tiles');
 
-	var cards = [];
+	var tiles = [];
 	rows.map(function(row) {
 		for (var i = row.Counter - 1; i >= 0; i--) {
 
@@ -86,9 +86,9 @@ d3.csv("data-tiles.csv", function(err, rows) {
 
 			var count = (row.Counter > 1) ? (i+1) + " of " + row.Counter : '';
 
-			cards.push("<pair>",
+			tiles.push("<pair>",
 				// Bogan
-				card.render({
+				tile.render({
 					Title: titlify(row.Bogan),
 					Classes: classes + ' bogan',
 					Category: row.Category,
@@ -96,7 +96,7 @@ d3.csv("data-tiles.csv", function(err, rows) {
 				}),
 
 				// Hipster
-				card.render({
+				tile.render({
 					Title: titlify(row.Hipster),
 					Classes: classes + ' hipster',
 					Category: row.Category,
@@ -107,7 +107,7 @@ d3.csv("data-tiles.csv", function(err, rows) {
 		}
 	});
 
-	page.html(cards.join(''));
+	page.html(tiles.join(''));
 });
 
 function titlify (title) {

@@ -21,7 +21,7 @@ body {
 		display:block;
 	}
 
-card {
+tile, card {
 	width: 4.5cm;
 	height: 4.5cm;
 	color: #fff;
@@ -34,6 +34,12 @@ card {
 	page-break-inside: avoid;
 	background-size: cover;
 	display: none;
+}
+
+card {
+	display: block;
+	height: 6.8cm;
+	width: 5cm;
 }
 
 h1 {
@@ -60,8 +66,16 @@ h1 {
 		font-size: small;
 	}
 
+card h1 {
+	-webkit-box-align: baseline;
+	margin-top: .1em;
+	font-size: 1.2em;
+	-webkit-box-pack: initial;
+}
+card p {z-index: 2;-webkit-box-align: center;display: -webkit-box;position: relative;top: 5em;font-size: 9pt;}
+
 /* roads */
-card {
+tile {
 	border:0;
 }
 /* setup individual border widths */
@@ -78,7 +92,7 @@ card {
 	border-left: .7cm solid white
 }
 /* override with styling */
-.card {
+.tile {
 	border-color: rgba(240,240,240,.9);
 	border-style: solid;
 	/*border-image: url('images/cobblestone_texture_tileable_by_kuroyumegd-d5xb747.jpg') 100 repeat;*/
@@ -90,6 +104,10 @@ pair {
 	height: 4.5cm;
 	float: left;
 	page-break-inside: avoid;
+}
+#cards pair {
+	height: 6.8cm;
+	width: 5cm;
 }
 
 .bogan,
@@ -137,7 +155,7 @@ counter {
 	left: .5cm;
 	text-align: left;
 }
-.card:after {
+.tile:after {
 	content: "";
 	position: absolute;
 	z-index: 99;

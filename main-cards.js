@@ -6,10 +6,10 @@ function generateTileBackground () {
 		cellpadding: 10, 
 		cellsize: 50
 	};
-	var css = '.card.bogan { background-image: ' + new Trianglify(trianglifyOpts)
+	var css = '.card { background-image: ' + new Trianglify(trianglifyOpts)
 						.generate(250, 250)
 						.dataUrl + ' }' +
-				'.card.hipster { background-image: ' + new Trianglify(trianglifyOpts)
+				'.card.Action { background-image: ' + new Trianglify(trianglifyOpts)
 						.generate(250, 250)
 						.dataUrl + ' }',
 		head = document.head,
@@ -43,16 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	document.querySelector('.both-cards')
 	.addEventListener('click', function() {
-		cards.className = 'hipster bogan'
-	})
+		cards.className = 'hipster bogan';
+	});
 
 	document.querySelector('.toggle-cards')
 	.addEventListener('click', function() {
 
 		var states = [
-			'hipster'
-			, 'bogan'
-			// , 'hipster bogan'
+			'hipster', 'bogan'
 		];
 
 		cards.className = states[lastState++] || states[0];
@@ -63,13 +61,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Main card template
-var card = Hogan.compile("<card class='card {{Classes}}'>"+
-							"<h1>{{{Title}}}</h1>"+
-							"<category>{{Category}}</category>" +
+var card = Hogan.compile("<pair><card class='card {{Type}}'>"+
+							"<h1>{{{Name}}}</h1>"+
+							"<p>{{{Text}}}</p>"+
+							"<category>{{Type}}</category>" +
 							"{{#Counter}}" +
 								"<counter>{{Counter}}</counter>" +
 							"{{/Counter}}" +
-						"</card>");
+						"</card></pair>");
 
 // Get CSV
 d3.csv("data-cards.csv", function(err, rows) {
@@ -77,37 +76,26 @@ d3.csv("data-cards.csv", function(err, rows) {
 
 	var cards = [];
 	rows.map(function(row) {
-		for (var i = row.Counter - 1; i >= 0; i--) {
-
-			var classes = row.Position.split(' ');
-			classes.push(row.Category);
-
-			classes = classes.join(' ').toLowerCase();
-
-			var count = (row.Counter > 1) ? (i+1) + " of " + row.Counter : '';
-
-			cards.push("<pair>",
-				// Bogan
-				card.render({
-					Title: titlify(row.Bogan),
-					Classes: classes + ' bogan',
-					Category: row.Category,
-					Counter: count
-				}),
-
-				// Hipster
-				card.render({
-					Title: titlify(row.Hipster),
-					Classes: classes + ' hipster',
-					Category: row.Category,
-					Counter: count
-				}),
-				"</pair>"
-			);
-		}
+		// Type,Name,Text,Points,Quantity,,,,,Notes
+		if (row.Quantity)
+			for (var i = row.Quantity - 1; i >= 0; i--)
+				cards.push(newCard(row, i));
+		else
+			cards.push(newCard(row));
 	});
 
 	page.html(cards.join(''));
+
+	function newCard (row, i) {
+		var count = (i && row.Quantity > 1) ? (i+1) + " of " + row.Quantity : '';
+		return card.render({
+			Type: (row.Points) ? row.Points + ' points' : row.Type,
+			Name: row.Name,
+			Text: row.Text,
+			Quantity: count,
+			Notes: row.Notes
+		});
+	}
 });
 
 function titlify (title) {
