@@ -72,7 +72,7 @@ var card = Hogan.compile("<card class='card {{Classes}}'>"+
 						"</card>");
 
 // Get CSV
-d3.csv("data.csv", function(err, rows) {
+d3.csv("data-tiles.csv", function(err, rows) {
 	var page = d3.select('#cards');
 
 	var cards = [];
